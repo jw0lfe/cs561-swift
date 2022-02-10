@@ -41,4 +41,24 @@ final class MyLibraryTests: XCTestCase {
         XCTAssertNotNil(greeting)
         //XCTAssert(greeting == true)
     }
+
+    func testGetToken() throws {
+        
+        let myLibrary = MyLibrary()
+        let expectation = XCTestExpectation(description: "We want a token")
+        var authToken: String?
+
+        // When
+        myLibrary.getToken(completion: { token in
+            authToken = token
+            expectation.fulfill()
+        })
+
+        wait(for: [expectation], timeout: 30)
+
+        // Then
+        //print(greeting)
+        XCTAssertNotNil(authToken)
+        //XCTAssert(greeting == true)
+    }
 }

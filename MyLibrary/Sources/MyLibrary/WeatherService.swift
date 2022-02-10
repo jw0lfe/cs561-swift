@@ -112,4 +112,5 @@ private struct Greeting: Decodable {
 
 private struct Token: Decodable {
     let accesstoken: String
+    let expires: String
 }
