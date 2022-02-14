@@ -1,12 +1,12 @@
 import XCTest
-import MyLibrary
+@testable import MyLibrary
 
 final class MyLibraryTests: XCTestCase {
     func testWeather() throws {
         
         let myLibrary = MyLibrary()
         let expectation = XCTestExpectation(description: "We want the temperature")
-        var temperature: Int?
+        var temperature: String?
 
         // When
         myLibrary.getWeather(completion: { temp in

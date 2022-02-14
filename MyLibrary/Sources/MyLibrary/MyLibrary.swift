@@ -9,7 +9,7 @@ public class MyLibrary {
         self.weatherService = weatherService ?? WeatherServiceImpl()
     }
 
-    public func getWeather(completion: @escaping (Int?) -> Void) {
+    public func getWeather(completion: @escaping (String?) -> Void) {
                 
         // Fetch the current weather from the backend.
         // If the current temperature, in Farenheit, contains an 8, then that's lucky.
@@ -17,11 +17,11 @@ public class MyLibrary {
             switch response {
             case let .failure(error):
                 print(error)
-                completion(0)
+                completion("error getting weather")
 
             case let .success(temperature):
-                print(temperature)
-                completion(temperature)
+                print("The temp is: " + String(temperature))
+                completion(String(temperature))
             }
         }
     }
@@ -33,14 +33,32 @@ public class MyLibrary {
         weatherService.getGreeting { response in
             switch response {
             case let .failure(error):
-                completion("failed")
+                completion("error getting greeting")
 
             case let .success(greeting):
-                print(greeting)
+                print("Greeting: " + greeting)
                 completion(greeting)
             }
         }
     }
+
+    public func getToken(completion: @escaping (String?) -> Void) {
+                
+        // Fetch the current weather from the backend.
+        // If the current temperature, in Farenheit, contains an 8, then that's lucky.
+        weatherService.getToken { response in
+            switch response {
+            case let .failure(error):
+                completion("error getting token")
+
+            case let .success(token):
+                print("Token is: " + token)
+                completion(token)
+            }
+        }
+    }
+
+    
 
     /// Sample usage:
     ///   `contains(558, "8")` would return `true` because 588 contains 8.
