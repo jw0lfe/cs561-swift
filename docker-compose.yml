@@ -1,0 +1,11 @@
+services:
+  
+  server:
+    image: "swiftlang/swift:nightly-focal"
+    volumes:
+      - D:\School\Github\weather-swift-client\MyLibrary:/code
+    environment:
+      - USER=jen
+    #command: bash -c "apt-get update && apt-get install nodejs && apt-get install npm && npm install express --save"
+    #  && node code/app.js"
+    
